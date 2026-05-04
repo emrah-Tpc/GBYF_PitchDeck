@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyTime | GBYF Pitch Deck</title>
+    <style>
+        :root {
+            --background: #09090b;
+            --surface: #18181b;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.4);
+            --text-main: #fafafa;
+            --text-muted: #a1a1aa;
+            --accent: #8b5cf6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Classes (KORUNDU) */
+        .glass-card {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(30, 30, 35, 0.7);
+        }
+
+        .glow {
+            box-shadow: 0 0 35px var(--primary-glow);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 3.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 8px;
+        }
+
+        .lang-switch {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .lang-switch:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* 1. Hero Section */
+        .hero {
+            text-align: center;
+            padding: 8rem 0 4rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #fff 30%, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        /* 2. Problem & Çözüm */
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .ps-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ps-card.problem h3 {
+            color: #f87171;
+        }
+
+        .ps-card.solution h3 {
+            color: #4ade80;
+        }
+
+        /* 3. Teknik Mimari */
+        .architecture {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .arch-card .icon {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 16px;
+        }
+
+        .arch-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .tech-list {
+            margin-top: 1rem;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tech-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .tech-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* 4. Altın Saatler Algoritması */
+        .golden-hours {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .golden-hours h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #fbbf24;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* 5. Çözüm Algoritmaları ve Arayüz (YENİ GRID YAPISI) */
+        .showcase-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .showcase-card {
+            background: rgba(24, 24, 27, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .showcase-img {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px;
+        }
+
+        .showcase-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .showcase-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .showcase-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .algo-box,
+        .problem-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            flex-grow: 1;
+        }
+
+        .algo-box h4 {
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .problem-box h4 {
+            color: #4ade80;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 1024px) {
+            .showcase-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 6. Ekip & Footer */
+        .team {
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .team-member h4 {
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .problem-solution {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Navbar -->
+        <nav>
+            <div class="logo">
+                <div class="logo-icon"></div>
+                StudyTime
+            </div>
+            <button class="lang-switch" id="lang-btn" onclick="toggleLanguage()">EN</button>
+        </nav>
+
+        <!-- 1. Hero Section -->
+        <section class="hero">
+            <div class="badge" id="hero_badge">GBYF Yarışma Projesi</div>
+            <h1 id="hero_title">StudyTime</h1>
+            <p id="hero_subtitle">Çevrimdışı Öncelikli Akıllı Odaklanma Asistanı</p>
+        </section>
+
+        <!-- 2. Problem & Çözüm -->
+        <section>
+            <h2 id="ps_header">Problem & Çözüm</h2>
+            <div class="problem-solution">
+                <div class="glass-card ps-card problem">
+                    <h3 id="problem_title">⚠️ Problem</h3>
+                    <p id="problem_desc">Dijital dikkat dağınıklığı, odaklanma sorunları ve internet kesintilerinde
+                        yaşanan veri kaybı. Mevcut asistanların sürekli ağ bağlantısı gerektirmesi verimliliği
+                        düşürmektedir.</p>
+                </div>
+                <div class="glass-card ps-card solution glow">
+                    <h3 id="solution_title">💡 Çözüm</h3>
+                    <p id="solution_desc">StudyTime'ın kesintisiz ve bağlama duyarlı (Context-aware) yaklaşımı. Ağ
+                        olmasa bile çalışan asenkron mimarisi ile kişiselleştirilmiş, akıllı bir odaklanma ekosistemi.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Teknik Mimari & Altyapı -->
+        <section>
+            <h2 id="tech_header">Teknik Mimari & Altyapı</h2>
+            <div class="architecture">
+                <div class="glass-card arch-card">
+                    <div class="icon">💻</div>
+                    <h3 id="card1_title">.NET MAUI Blazor Hybrid</h3>
+                    <p id="card1_desc">Tek bir kod tabanıyla Masaüstü ve Mobil (Cross-platform) ortamlarında çalışan,
+                        modern ve yüksek performanslı hibrit uygulama mimarisi.</p>
+                    <ul class="tech-list">
+                        <li id="card1_li1">Clean Architecture ve SOLID prensiplerine tam uyum.</li>
+                        <li id="card1_li2">Ortak İş Mantığı (Domain/Application) ile %90+ kod paylaşımı.</li>
+                    </ul>
+                </div>
+                <div class="glass-card arch-card glow">
+                    <div class="icon">🔄</div>
+                    <h3 id="card2_title">Offline-First & Outbox Pattern</h3>
+                    <p id="card2_desc">SQLite ile yerel veritabanı yönetimi ve internet bağlantısı sağlandığında
+                        sunucuya veri aktarımını asenkron olarak yürüten Background Sync (Outbox) altyapısı.</p>
+                    <ul class="tech-list">
+                        <li id="card2_li1">Ağ kesintilerinde mutasyonların (Event Sourcing benzeri) yerel SQLite
+                            kuyruğunda saklanması.</li>
+                        <li id="card2_li2">Ağ geri geldiğinde BackgroundService ile çakışmasız (Conflict-Free) bulut
+                            senkronizasyonu.</li>
+                    </ul>
+                </div>
+                <div class="glass-card arch-card">
+                    <div class="icon">📊</div>
+                    <h3 id="card3_title">Gözlemlenebilirlik</h3>
+                    <p id="card3_desc">Sistem hareketlerini ve asenkron görevleri anlık takip edebilmek için Serilog ile
+                        entegre edilmiş yapılandırılmış loglama.</p>
+                    <ul class="tech-list">
+                        <li id="card3_li1">Dağıtık mimaride izlenebilirlik için yapılandırılmış JSON logları.</li>
+                        <li id="card3_li2">Hata toleransı (Fault Tolerance) ve otomatik yeniden deneme (Retry)
+                            politikaları.</li>
+                    </ul>
+                </div>
+                <div class="glass-card arch-card">
+                    <div class="icon">🔐</div>
+                    <h3 id="card4_title">Dağıtık Kimlik & Güvenlik</h3>
+                    <p id="card4_desc">Platforma duyarlı (Platform-Aware) JWT tabanlı kimlik doğrulama ve cihazlar arası
+                        güvenli durum (State) yönetimi.</p>
+                    <ul class="tech-list">
+                        <li id="card4_li1">Sürekli çalışma için güvenli Token Rotation (Refresh Token) döngüsü.</li>
+                        <li id="card4_li2">Veri bütünlüğünü sağlamak için Single Active Session (Tekil Aktif Oturum)
+                            kısıtlaması.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Altın Saatler Algoritması -->
+        <section>
+            <div class="glass-card golden-hours glow">
+                <h3 id="golden_title">✨ 'Altın Saatler' Algoritması</h3>
+                <p id="golden_desc" style="margin-bottom: 1.5rem;">Kullanıcının çalışma alışkanlıklarını, odaklanma
+                    sürelerini ve görev geçmişini analiz ederek en verimli saatlerini (Golden Hours) tespit eden ve
+                    bağlama duyarlı bildirimlerle verimliliği artıran akıllı asistan yeteneği.</p>
+                <div
+                    style="text-align: left; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h4 id="golden_tech_title" style="color: var(--primary); margin-bottom: 0.5rem;">🧠 Algoritmik
+                        Altyapı:</h4>
+                    <p id="golden_tech_desc" style="font-size: 0.95rem; margin-bottom: 0; color: var(--text-muted);">
+                        Performans odaklı "Sliding Window" (Kayan Pencere) algoritması kullanılarak, ağır veritabanı
+                        aggregasyonları yerine son 7 günün çalışma verisi üzerinden ağırlıklı hareketli ortalama
+                        (Weighted Moving Average) hesaplanır. Sistem, kullanıcı davranışlarına bağlama duyarlı
+                        (Context-Aware) reaksiyon gösterir.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Çözüm Algoritmaları ve Arayüz -->
+        <section>
+            <h2 id="ui_header">Çözüm Algoritmaları ve Arayüz (Ayrıntılı Analiz)</h2>
+            <div class="showcase-container">
+
+                <!-- 1. Genel Bakış -->
+                <div class="showcase-card glow">
+                    <img src="screenshotss/genel_bakis.png" alt="Genel Bakış" class="showcase-img">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title" id="showcase1_title">📊 Ana Dashboard ve Verimlilik Skoru</h3>
+                        <p id="showcase1_desc" style="font-size: 0.95rem; color: var(--text-muted);">Kullanıcının
+                            toplam, tamamlanan ve bekleyen görevlerini özetleyen kontrol merkezi.</p>
+                        <div class="showcase-grid">
+                            <div class="problem-box">
+                                <h4 id="showcase1_prob_title">🎯 Neyi Çözüyoruz?</h4>
+                                <p id="showcase1_prob_desc" style="font-size: 0.85rem; color: var(--text-muted);">
+                                    Kullanıcı, eforunun genel gidişatını tek bakışta göremediğinde motivasyon kaybı
+                                    yaşar.</p>
+                            </div>
+                            <div class="algo-box">
+                                <h4 id="showcase1_algo_title">⚙️ Algoritma</h4>
+                                <p id="showcase1_algo_desc" style="font-size: 0.85rem; color: var(--text-muted);">
+                                    İstatistikler "Event Sourcing" benzeri bir mimariyle toplanır ve UI bloklanmadan
+                                    anlık (Real-time) olarak güncellenir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Ders Aralığı / Altın Saatler -->
+                <div class="showcase-card">
+                    <img src="screenshotss/dersaralıgı_verimli_aralıg.png" alt="Altın Saatler" class="showcase-img">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title" id="showcase2_title">✨ En Verimli Aralık (Altın Saatler)</h3>
+                        <p id="showcase2_desc" style="font-size: 0.95rem; color: var(--text-muted);">Kişisel verimlilik
+                            zirvelerinin (Peak Hours) tespit edildiği analiz modülü.</p>
+                        <div class="showcase-grid">
+                            <div class="problem-box">
+                                <h4 id="showcase2_prob_title">🎯 Neyi Çözüyoruz?</h4>
+                                <p id="showcase2_prob_desc" style="font-size: 0.85rem; color: var(--text-muted);">Klasik
+                                    sistemler kullanıcının "ne zaman" daha iyi çalıştığını analiz edemez ve geri
+                                    bildirim sunmaz.</p>
+                            </div>
+                            <div class="algo-box">
+                                <h4 id="showcase2_algo_title">⚙️ Algoritma</h4>
+                                <p id="showcase2_algo_desc" style="font-size: 0.85rem; color: var(--text-muted);">
+                                    "Sliding Window" ve In-Memory hareketli ortalama algoritmasıyla son 7 gün analiz
+                                    edilerek günün en verimli saatleri tespit edilir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Çalışma Geçmişi -->
+                <div class="showcase-card">
+                    <img src="screenshotss/calisma_gecmisi.png" alt="Çalışma Geçmişi" class="showcase-img">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title" id="showcase3_title">📅 Çalışma Geçmişi ve Lineer Analiz</h3>
+                        <p id="showcase3_desc" style="font-size: 0.95rem; color: var(--text-muted);">Geçmiş oturumların
+                            zamansal dağılımını gösteren detaylı performans ekranı.</p>
+                        <div class="showcase-grid">
+                            <div class="problem-box">
+                                <h4 id="showcase3_prob_title">🎯 Neyi Çözüyoruz?</h4>
+                                <p id="showcase3_prob_desc" style="font-size: 0.85rem; color: var(--text-muted);">
+                                    Kullanıcı, dünkü eforu ile bugünkü eforunu karşılaştırmak için şeffaf bir veriye
+                                    ihtiyaç duyar.</p>
+                            </div>
+                            <div class="algo-box">
+                                <h4 id="showcase3_algo_title">⚙️ Algoritma</h4>
+                                <p id="showcase3_algo_desc" style="font-size: 0.85rem; color: var(--text-muted);">
+                                    Veriler SQLite üzerinden indekslenmiş sorgularla saniyeler içinde çekilip (Zero
+                                    Latency), Blazor interop ile grafik kütüphanesine render edilir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Odak Modu -->
+                <div class="showcase-card glow">
+                    <img src="screenshotss/odak_mode.png" alt="Odak Modu" class="showcase-img">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title" id="showcase4_title">⏱️ Odak Modu (Pomodoro/Serbest)</h3>
+                        <p id="showcase4_desc" style="font-size: 0.95rem; color: var(--text-muted);">Dış dünyadan izole,
+                            zamanlayıcının ve bağlam duyarlı bildirimlerin aktif olduğu ana alan.</p>
+                        <div class="showcase-grid">
+                            <div class="problem-box">
+                                <h4 id="showcase4_prob_title">🎯 Neyi Çözüyoruz?</h4>
+                                <p id="showcase4_prob_desc" style="font-size: 0.85rem; color: var(--text-muted);">
+                                    Çalışma anında dikkat dağınıklığı ve internet koptuğunda veri kaybı riskini ortadan
+                                    kaldırıyoruz.</p>
+                            </div>
+                            <div class="algo-box">
+                                <h4 id="showcase4_algo_title">⚙️ Algoritma</h4>
+                                <p id="showcase4_algo_desc" style="font-size: 0.85rem; color: var(--text-muted);">
+                                    Offline-First çalışır. Sayaç bittiğinde olay SQLite'a yazılır, ağ geldiğinde Outbox
+                                    Pattern ile asenkron olarak arka planda senkronize olur.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Seanslar -->
+                <div class="showcase-card">
+                    <img src="screenshotss/seanslar.png" alt="Seanslar" class="showcase-img">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title" id="showcase5_title">🗂️ Oturum (Seans) Yönetimi</h3>
+                        <p id="showcase5_desc" style="font-size: 0.95rem; color: var(--text-muted);">Kaydedilen
+                            odaklanma seanslarının yönetildiği veri tablosu.</p>
+                        <div class="showcase-grid">
+                            <div class="problem-box">
+                                <h4 id="showcase5_prob_title">🎯 Neyi Çözüyoruz?</h4>
+                                <p id="showcase5_prob_desc" style="font-size: 0.85rem; color: var(--text-muted);">Hangi
+                                    seansın ne kadar başarılı geçtiğini veya manuel düzeltme gerektirdiğini ölçümlemek
+                                    zordur.</p>
+                            </div>
+                            <div class="algo-box">
+                                <h4 id="showcase5_algo_title">⚙️ Algoritma</h4>
+                                <p id="showcase5_algo_desc" style="font-size: 0.85rem; color: var(--text-muted);">Her
+                                    seans "StudySession" entity'si olarak kaydedilir, oturumlar arası durum (State)
+                                    güvenliği platforma duyarlı JWT ile sağlanır.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Lessons -->
+                <div class="showcase-card">
+                    <img src="screenshotss/lessons.png" alt="Dersler" class="showcase-img">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title" id="showcase6_title">📚 Kategori ve Ders Yönetimi</h3>
+                        <p id="showcase6_desc" style="font-size: 0.95rem; color: var(--text-muted);">Çalışma alanlarının
+                            kategorize edildiği, yapılandırılmış ders merkezi.</p>
+                        <div class="showcase-grid">
+                            <div class="problem-box">
+                                <h4 id="showcase6_prob_title">🎯 Neyi Çözüyoruz?</h4>
+                                <p id="showcase6_prob_desc" style="font-size: 0.85rem; color: var(--text-muted);">
+                                    Karmaşık çalışma planları organize edilmezse (Ders -> Konu -> Görev) ciddi zaman
+                                    kaybı yaratır.</p>
+                            </div>
+                            <div class="algo-box">
+                                <h4 id="showcase6_algo_title">⚙️ Algoritma</h4>
+                                <p id="showcase6_algo_desc" style="font-size: 0.85rem; color: var(--text-muted);">Entity
+                                    Framework Core ilişkisel veritabanı (Relational DB) mantığı ile Kategoriler ve
+                                    Görevler birbirine tam referanslı bağlanır (Foreign Key).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Görev Detay -->
+                <div class="showcase-card">
+                    <img src="screenshotss/gorev_detay.png" alt="Görev Detay" class="showcase-img">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title" id="showcase7_title">📝 Görev Takibi ve Analizi</h3>
+                        <p id="showcase7_desc" style="font-size: 0.95rem; color: var(--text-muted);">Belirli bir göreve
+                            harcanan zamanın ve ilerleme oranının detaylı takibi.</p>
+                        <div class="showcase-grid">
+                            <div class="problem-box">
+                                <h4 id="showcase7_prob_title">🎯 Neyi Çözüyoruz?</h4>
+                                <p id="showcase7_prob_desc" style="font-size: 0.85rem; color: var(--text-muted);">Büyük
+                                    hedefler (Epics) alt parçalara (Tasks) ve oturumlara bölünmediğinde ulaşılamaz
+                                    görünür.</p>
+                            </div>
+                            <div class="algo-box">
+                                <h4 id="showcase7_algo_title">⚙️ Algoritma</h4>
+                                <p id="showcase7_algo_desc" style="font-size: 0.85rem; color: var(--text-muted);">Görev
+                                    tamamlanma oranları hiyerarşik (Tree/Graph) bir yapıda hesaplanıp parent (üst)
+                                    entity'ye doğru toplanır (Aggregation).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Görev Takvimi -->
+                <div class="showcase-card">
+                    <img src="screenshotss/gorev_takvim.png" alt="Takvim" class="showcase-img">
+                    <div class="showcase-content">
+                        <h3 class="showcase-title" id="showcase8_title">🗓️ Zaman ve Görev Planlaması</h3>
+                        <p id="showcase8_desc" style="font-size: 0.95rem; color: var(--text-muted);">Gelecek hedeflerin
+                            ve teslim tarihlerinin (Deadline) takvimsel görünümü.</p>
+                        <div class="showcase-grid">
+                            <div class="problem-box">
+                                <h4 id="showcase8_prob_title">🎯 Neyi Çözüyoruz?</h4>
+                                <p id="showcase8_prob_desc" style="font-size: 0.85rem; color: var(--text-muted);">Teslim
+                                    tarihi yönetimi yapılmadığında süreçler gecikir, stres ve erteleme (Procrastination)
+                                    tetiklenir.</p>
+                            </div>
+                            <div class="algo-box">
+                                <h4 id="showcase8_algo_title">⚙️ Algoritma</h4>
+                                <p id="showcase8_algo_desc" style="font-size: 0.85rem; color: var(--text-muted);">
+                                    Background Service (Arka plan servisi) ile yaklaşan görevler periyodik taranır ve
+                                    işletim sistemi native bildirim motoru tetiklenir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Ekip ve Proje Bilgileri -->
+        <section class="team">
+            <h2 id="team_header">Proje Ekibi</h2>
+            <p id="team_uni" style="font-size: 1.2rem; color: #fff; margin-bottom: 2rem; font-weight: 600;">Doğu Akdeniz
+                Üniversitesi (DAÜ) GBYF Yarışma Projesi</p>
+
+            <div class="team-grid">
+                <div class="glass-card team-member">
+                    <h4 id="team_devs">Geliştiriciler</h4>
+                    <p>Emrah Topçu</p>
+                </div>
+                <div class="glass-card team-member">
+                    <h4 id="team_mentor">Danışman</h4>
+                    <p>Prof. Dr. Akile Oday</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p id="footer_text">&copy; 2026 StudyTime. Tüm hakları saklıdır. GBYF için hazırlanmıştır.</p>
+        </footer>
+    </div>
+
+    <!-- Language Switcher Script -->
+    <script>
+        const dict = {
+            tr: {
+                hero_badge: "GBYF Yarışma Projesi",
+                hero_title: "StudyTime",
+                hero_subtitle: "Çevrimdışı Öncelikli Akıllı Odaklanma Asistanı",
+                ps_header: "Problem & Çözüm",
+                problem_title: "⚠️ Problem",
+                problem_desc: "Dijital dikkat dağınıklığı, odaklanma sorunları ve internet kesintilerinde yaşanan veri kaybı. Mevcut asistanların sürekli ağ bağlantısı gerektirmesi verimliliği düşürmektedir.",
+                solution_title: "💡 Çözüm",
+                solution_desc: "StudyTime'ın kesintisiz ve bağlama duyarlı (Context-aware) yaklaşımı. Ağ olmasa bile çalışan asenkron mimarisi ile kişiselleştirilmiş, akıllı bir odaklanma ekosistemi.",
+                tech_header: "Teknik Mimari & Altyapı",
+                card1_title: ".NET MAUI Blazor Hybrid",
+                card1_desc: "Tek bir kod tabanıyla Masaüstü ve Mobil (Cross-platform) ortamlarında çalışan, modern ve yüksek performanslı hibrit uygulama mimarisi.",
+                card1_li1: "Clean Architecture ve SOLID prensiplerine tam uyum.",
+                card1_li2: "Ortak İş Mantığı (Domain/Application) ile %90+ kod paylaşımı.",
+                card2_title: "Offline-First & Outbox Pattern",
+                card2_desc: "SQLite ile yerel veritabanı yönetimi ve internet bağlantısı sağlandığında sunucuya veri aktarımını asenkron olarak yürüten Background Sync (Outbox) altyapısı.",
+                card2_li1: "Ağ kesintilerinde mutasyonların (Event Sourcing benzeri) yerel SQLite kuyruğunda saklanması.",
+                card2_li2: "Ağ geri geldiğinde BackgroundService ile çakışmasız (Conflict-Free) bulut senkronizasyonu.",
+                card3_title: "Gözlemlenebilirlik",
+                card3_desc: "Sistem hareketlerini ve asenkron görevleri anlık takip edebilmek için Serilog ile entegre edilmiş yapılandırılmış loglama.",
+                card3_li1: "Dağıtık mimaride izlenebilirlik için yapılandırılmış JSON logları.",
+                card3_li2: "Hata toleransı (Fault Tolerance) ve otomatik yeniden deneme (Retry) politikaları.",
+                card4_title: "Dağıtık Kimlik & Güvenlik",
+                card4_desc: "Platforma duyarlı (Platform-Aware) JWT tabanlı kimlik doğrulama ve cihazlar arası güvenli durum (State) yönetimi.",
+                card4_li1: "Sürekli çalışma için güvenli Token Rotation (Refresh Token) döngüsü.",
+                card4_li2: "Veri bütünlüğünü sağlamak için Single Active Session (Tekil Aktif Oturum) kısıtlaması.",
+                golden_title: "✨ 'Altın Saatler' Algoritması",
+                golden_desc: "Kullanıcının çalışma alışkanlıklarını, odaklanma sürelerini ve görev geçmişini analiz ederek en verimli saatlerini (Golden Hours) tespit eden ve bağlama duyarlı bildirimlerle verimliliği artıran akıllı asistan yeteneği.",
+                golden_tech_title: "🧠 Algoritmik Altyapı:",
+                golden_tech_desc: "Performans odaklı \"Sliding Window\" (Kayan Pencere) algoritması kullanılarak, ağır veritabanı aggregasyonları yerine son 7 günün çalışma verisi üzerinden ağırlıklı hareketli ortalama (Weighted Moving Average) hesaplanır. Sistem, kullanıcı davranışlarına bağlama duyarlı (Context-Aware) reaksiyon gösterir.",
+
+                ui_header: "Çözüm Algoritmaları ve Arayüz (Ayrıntılı Analiz)",
+                showcase1_title: "📊 Ana Dashboard ve Verimlilik Skoru",
+                showcase1_desc: "Kullanıcının toplam, tamamlanan ve bekleyen görevlerini özetleyen kontrol merkezi.",
+                showcase1_prob_title: "🎯 Neyi Çözüyoruz?",
+                showcase1_prob_desc: "Kullanıcı, eforunun genel gidişatını tek bakışta göremediğinde motivasyon kaybı yaşar.",
+                showcase1_algo_title: "⚙️ Algoritma",
+                showcase1_algo_desc: "İstatistikler 'Event Sourcing' benzeri bir mimariyle toplanır ve UI bloklanmadan anlık (Real-time) olarak güncellenir.",
+
+                showcase2_title: "✨ En Verimli Aralık (Altın Saatler)",
+                showcase2_desc: "Kişisel verimlilik zirvelerinin (Peak Hours) tespit edildiği analiz modülü.",
+                showcase2_prob_title: "🎯 Neyi Çözüyoruz?",
+                showcase2_prob_desc: "Klasik sistemler kullanıcının 'ne zaman' daha iyi çalıştığını analiz edemez ve geri bildirim sunmaz.",
+                showcase2_algo_title: "⚙️ Algoritma",
+                showcase2_algo_desc: "'Sliding Window' ve In-Memory hareketli ortalama algoritmasıyla son 7 gün analiz edilerek günün en verimli saatleri tespit edilir.",
+
+                showcase3_title: "📅 Çalışma Geçmişi ve Lineer Analiz",
+                showcase3_desc: "Geçmiş oturumların zamansal dağılımını gösteren detaylı performans ekranı.",
+                showcase3_prob_title: "🎯 Neyi Çözüyoruz?",
+                showcase3_prob_desc: "Kullanıcı, dünkü eforu ile bugünkü eforunu karşılaştırmak için şeffaf bir veriye ihtiyaç duyar.",
+                showcase3_algo_title: "⚙️ Algoritma",
+                showcase3_algo_desc: "Veriler SQLite üzerinden indekslenmiş sorgularla saniyeler içinde çekilip (Zero Latency), Blazor interop ile grafik kütüphanesine render edilir.",
+
+                showcase4_title: "⏱️ Odak Modu (Pomodoro/Serbest)",
+                showcase4_desc: "Dış dünyadan izole, zamanlayıcının ve bağlam duyarlı bildirimlerin aktif olduğu ana alan.",
+                showcase4_prob_title: "🎯 Neyi Çözüyoruz?",
+                showcase4_prob_desc: "Çalışma anında dikkat dağınıklığı ve internet koptuğunda veri kaybı riskini ortadan kaldırıyoruz.",
+                showcase4_algo_title: "⚙️ Algoritma",
+                showcase4_algo_desc: "Offline-First çalışır. Sayaç bittiğinde olay SQLite'a yazılır, ağ geldiğinde Outbox Pattern ile asenkron olarak arka planda senkronize olur.",
+
+                showcase5_title: "🗂️ Oturum (Seans) Yönetimi",
+                showcase5_desc: "Kaydedilen odaklanma seanslarının yönetildiği veri tablosu.",
+                showcase5_prob_title: "🎯 Neyi Çözüyoruz?",
+                showcase5_prob_desc: "Hangi seansın ne kadar başarılı geçtiğini veya manuel düzeltme gerektirdiğini ölçümlemek zordur.",
+                showcase5_algo_title: "⚙️ Algoritma",
+                showcase5_algo_desc: "Her seans 'StudySession' entity'si olarak kaydedilir, oturumlar arası durum (State) güvenliği platforma duyarlı JWT ile sağlanır.",
+
+                showcase6_title: "📚 Kategori ve Ders Yönetimi",
+                showcase6_desc: "Çalışma alanlarının kategorize edildiği, yapılandırılmış ders merkezi.",
+                showcase6_prob_title: "🎯 Neyi Çözüyoruz?",
+                showcase6_prob_desc: "Karmaşık çalışma planları organize edilmezse (Ders -> Konu -> Görev) ciddi zaman kaybı yaratır.",
+                showcase6_algo_title: "⚙️ Algoritma",
+                showcase6_algo_desc: "Entity Framework Core ilişkisel veritabanı mantığı ile Kategoriler ve Görevler birbirine tam referanslı bağlanır (Foreign Key).",
+
+                showcase7_title: "📝 Görev Takibi ve Analizi",
+                showcase7_desc: "Belirli bir göreve harcanan zamanın ve ilerleme oranının detaylı takibi.",
+                showcase7_prob_title: "🎯 Neyi Çözüyoruz?",
+                showcase7_prob_desc: "Büyük hedefler (Epics) alt parçalara (Tasks) ve oturumlara bölünmediğinde ulaşılamaz görünür.",
+                showcase7_algo_title: "⚙️ Algoritma",
+                showcase7_algo_desc: "Görev tamamlanma oranları hiyerarşik (Tree/Graph) bir yapıda hesaplanıp parent (üst) entity'ye doğru toplanır (Aggregation).",
+
+                showcase8_title: "🗓️ Zaman ve Görev Planlaması",
+                showcase8_desc: "Gelecek hedeflerin ve teslim tarihlerinin (Deadline) takvimsel görünümü.",
+                showcase8_prob_title: "🎯 Neyi Çözüyoruz?",
+                showcase8_prob_desc: "Teslim tarihi yönetimi yapılmadığında süreçler gecikir, stres ve erteleme (Procrastination) tetiklenir.",
+                showcase8_algo_title: "⚙️ Algoritma",
+                showcase8_algo_desc: "Background Service (Arka plan servisi) ile yaklaşan görevler periyodik taranır ve işletim sistemi native bildirim motoru tetiklenir.",
+
+                team_header: "Proje Ekibi",
+                team_uni: "Doğu Akdeniz Üniversitesi (DAÜ) GBYF Yarışma Projesi",
+                team_devs: "Geliştiriciler",
+                team_mentor: "Akile Oday",
+                footer_text: "© 2026 StudyTime. Tüm hakları saklıdır. GBYF için hazırlanmıştır."
+            },
+            en: {
+                hero_badge: "GBYF Competition Project",
+                hero_title: "StudyTime",
+                hero_subtitle: "Offline-First Smart Focus Assistant",
+                ps_header: "Problem & Solution",
+                problem_title: "⚠️ Problem",
+                problem_desc: "Digital distraction, focus issues, and data loss during internet outages. Existing assistants requiring constant network connections reduce productivity.",
+                solution_title: "💡 Solution",
+                solution_desc: "StudyTime's continuous and context-aware approach. A personalized, smart focus ecosystem with an asynchronous architecture that works even offline.",
+                tech_header: "Technical Architecture & Infrastructure",
+                card1_title: ".NET MAUI Blazor Hybrid",
+                card1_desc: "Modern and high-performance hybrid application architecture running on Desktop and Mobile (Cross-platform) environments with a single codebase.",
+                card1_li1: "Full compliance with Clean Architecture and SOLID principles.",
+                card1_li2: "Over 90% code sharing with Common Business Logic (Domain/Application).",
+                card2_title: "Offline-First & Outbox Pattern",
+                card2_desc: "Local database management with SQLite and Background Sync (Outbox) infrastructure that asynchronously transfers data to the server when internet connection is available.",
+                card2_li1: "Storing mutations (Event Sourcing style) in local SQLite queue during network outages.",
+                card2_li2: "Conflict-Free cloud synchronization via BackgroundService when network returns.",
+                card3_title: "Observability",
+                card3_desc: "Structured Logging integrated with Serilog to instantly track system movements and asynchronous tasks.",
+                card3_li1: "Structured JSON logs for traceability in distributed architecture.",
+                card3_li2: "Fault Tolerance and automatic Retry policies.",
+                card4_title: "Distributed Identity & Security",
+                card4_desc: "Platform-Aware JWT-based authentication and secure cross-device state management.",
+                card4_li1: "Secure Token Rotation (Refresh Token) loop for continuous operation.",
+                card4_li2: "Single Active Session constraint to ensure data integrity.",
+                golden_title: "✨ 'Golden Hours' Algorithm",
+                golden_desc: "A smart assistant capability that analyzes the user's work habits, focus durations, and task history to determine the most productive hours (Golden Hours) and increases efficiency with context-aware notifications.",
+                golden_tech_title: "🧠 Algorithmic Infrastructure:",
+                golden_tech_desc: "Using a performance-oriented 'Sliding Window' algorithm, it calculates a Weighted Moving Average over the last 7 days of work data instead of heavy database aggregations. The system reacts to user behavior in a Context-Aware manner.",
+
+                ui_header: "Solution Algorithms and Interface (Detailed Analysis)",
+                showcase1_title: "📊 Main Dashboard and Productivity Score",
+                showcase1_desc: "Control center summarizing the user's total, completed, and pending tasks.",
+                showcase1_prob_title: "🎯 What Are We Solving?",
+                showcase1_prob_desc: "Users lose motivation when they cannot see the overall progress of their effort at a glance.",
+                showcase1_algo_title: "⚙️ Algorithm",
+                showcase1_algo_desc: "Statistics are collected with an 'Event Sourcing' style architecture and updated in real-time without blocking the UI.",
+
+                showcase2_title: "✨ Most Productive Interval (Golden Hours)",
+                showcase2_desc: "Analysis module where personal productivity peaks (Peak Hours) are detected.",
+                showcase2_prob_title: "🎯 What Are We Solving?",
+                showcase2_prob_desc: "Classic systems cannot analyze 'when' the user works better and provide feedback.",
+                showcase2_algo_title: "⚙️ Algorithm",
+                showcase2_algo_desc: "By analyzing the last 7 days with a 'Sliding Window' and In-Memory moving average algorithm, the most productive hours of the day are determined.",
+
+                showcase3_title: "📅 Work History and Linear Analysis",
+                showcase3_desc: "Detailed performance screen showing the temporal distribution of past sessions.",
+                showcase3_prob_title: "🎯 What Are We Solving?",
+                showcase3_prob_desc: "The user needs transparent data to compare yesterday's effort with today's effort.",
+                showcase3_algo_title: "⚙️ Algorithm",
+                showcase3_algo_desc: "Data is fetched in seconds via indexed queries over SQLite (Zero Latency) and rendered to the charting library via Blazor interop.",
+
+                showcase4_title: "⏱️ Focus Mode (Pomodoro/Free)",
+                showcase4_desc: "Main area isolated from the outside world, where the timer and context-aware notifications are active.",
+                showcase4_prob_title: "🎯 What Are We Solving?",
+                showcase4_prob_desc: "We eliminate the risk of distraction during study and data loss when the internet drops.",
+                showcase4_algo_title: "⚙️ Algorithm",
+                showcase4_algo_desc: "Works Offline-First. When the timer ends, the event is written to SQLite; when the network returns, it syncs asynchronously in the background via Outbox Pattern.",
+
+                showcase5_title: "🗂️ Session Management",
+                showcase5_desc: "Data table where saved focus sessions are managed.",
+                showcase5_prob_title: "🎯 What Are We Solving?",
+                showcase5_prob_desc: "It is difficult to measure how successful each session was or if it requires manual correction.",
+                showcase5_algo_title: "⚙️ Algorithm",
+                showcase5_algo_desc: "Each session is saved as a 'StudySession' entity, and cross-session state security is provided by platform-aware JWT.",
+
+                showcase6_title: "📚 Category and Lesson Management",
+                showcase6_desc: "Structured lesson center where study areas are categorized.",
+                showcase6_prob_title: "🎯 What Are We Solving?",
+                showcase6_prob_desc: "If complex study plans are not organized (Lesson -> Topic -> Task), it causes a serious waste of time.",
+                showcase6_algo_title: "⚙️ Algorithm",
+                showcase6_algo_desc: "Categories and Tasks are fully linked with referential integrity (Foreign Key) using Entity Framework Core relational database logic.",
+
+                showcase7_title: "📝 Task Tracking and Analysis",
+                showcase7_desc: "Detailed tracking of the time spent on a specific task and its progress rate.",
+                showcase7_prob_title: "🎯 What Are We Solving?",
+                showcase7_prob_desc: "Big goals (Epics) seem unreachable when not broken down into sub-parts (Tasks) and sessions.",
+                showcase7_algo_title: "⚙️ Algorithm",
+                showcase7_algo_desc: "Task completion rates are calculated in a hierarchical (Tree/Graph) structure and aggregated upwards to the parent entity.",
+
+                showcase8_title: "🗓️ Time and Task Planning",
+                showcase8_desc: "Calendar view of future goals and deadlines.",
+                showcase8_prob_title: "🎯 What Are We Solving?",
+                showcase8_prob_desc: "When deadline management is not done, processes are delayed, triggering stress and procrastination.",
+                showcase8_algo_title: "⚙️ Algorithm",
+                showcase8_algo_desc: "Upcoming tasks are periodically scanned via Background Service and the operating system's native notification engine is triggered.",
+
+                team_header: "Project Team",
+                team_uni: "Eastern Mediterranean University (EMU) GBYF Competition Project",
+                team_devs: "Developers",
+                team_mentor: "Mentor",
+                footer_text: "© 2026 StudyTime. All rights reserved. Prepared for GBYF."
+            }
+        };
+
+        let currentLang = 'tr';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'tr' ? 'en' : 'tr';
+            document.getElementById('lang-btn').innerText = currentLang === 'tr' ? 'EN' : 'TR';
+            document.documentElement.lang = currentLang;
+
+            for (const key in dict[currentLang]) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = dict[currentLang][key];
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
