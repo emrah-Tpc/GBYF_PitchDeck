@@ -1120,8 +1120,8 @@
     <!-- FLOATING DEMO BUTTON -->
     <button class="float-demo-btn" id="float-demo-btn" onclick="scrollToDemo()">
         <div class="fdb-icon">📱</div>
-        <span>Demoyu Dene</span>
-        <span class="fdb-pill">CANLI</span>
+        <span id="float_demo_text">Demoyu Dene</span>
+        <span class="fdb-pill" id="float_demo_pill">CANLI</span>
     </button>
 
     <div id="app-toast-container" class="toast-container"></div>
@@ -1161,19 +1161,19 @@
             <div class="hero-cta-group">
                 <button class="hero-cta-primary" onclick="scrollToDemo()">
                     <span>📱</span>
-                    <span>Uygulamayı Dene</span>
+                    <span id="hero_cta_try">Uygulamayı Dene</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
                 <button class="hero-cta-secondary" onclick="document.getElementById('showcase').scrollIntoView({behavior:'smooth'})">
                     <span>🔬</span>
-                    <span>Teknik Detayları İncele</span>
+                    <span id="hero_cta_details">Teknik Detayları İncele</span>
                 </button>
                 <!-- Trust Badges -->
                 <div class="hero-trust-badges">
-                    <span class="hero-badge-item"><span class="hero-badge-dot"></span>Offline-First</span>
+                    <span class="hero-badge-item" id="hero_trust_offline"><span class="hero-badge-dot"></span>Offline-First</span>
                     <span class="hero-badge-item"><span class="hero-badge-dot"></span>.NET MAUI</span>
-                    <span class="hero-badge-item"><span class="hero-badge-dot"></span>Altın Saatler AI</span>
-                    <span class="hero-badge-item"><span class="hero-badge-dot"></span>SQLite Sync</span>
+                    <span class="hero-badge-item" id="hero_trust_golden"><span class="hero-badge-dot"></span>Altın Saatler AI</span>
+                    <span class="hero-badge-item" id="hero_trust_sqlite"><span class="hero-badge-dot"></span>SQLite Sync</span>
                 </div>
             </div>
         </section>
@@ -2166,6 +2166,13 @@
                 hero_badge: "GBYF Yarışma Projesi",
                 hero_title: "StudyTime",
                 hero_subtitle: "Çevrimdışı Öncelikli Akıllı Odaklanma Asistanı",
+                hero_cta_try: "Uygulamayı Dene",
+                hero_cta_details: "Teknik Detayları İncele",
+                hero_trust_offline: "Offline-First",
+                hero_trust_golden: "Altın Saatler AI",
+                hero_trust_sqlite: "SQLite Sync",
+                float_demo_text: "Demoyu Dene",
+                float_demo_pill: "CANLI",
                 ps_header: "Problem & Çözüm",
                 problem_title: "⚠️ Problem",
                 problem_desc: "Dijital dikkat dağınıklığı, odaklanma sorunları ve internet kesintilerinde yaşanan veri kaybı. Mevcut asistanların sürekli ağ bağlantısı gerektirmesi verimliliği düşürmektedir.",
@@ -2306,6 +2313,13 @@
                 hero_badge: "GBYF Competition Project",
                 hero_title: "StudyTime",
                 hero_subtitle: "Offline-First Smart Focus Assistant",
+                hero_cta_try: "Try the App",
+                hero_cta_details: "Explore Technical Details",
+                hero_trust_offline: "Offline-First",
+                hero_trust_golden: "Golden Hours AI",
+                hero_trust_sqlite: "SQLite Sync",
+                float_demo_text: "Try the Demo",
+                float_demo_pill: "LIVE",
                 ps_header: "Problem & Solution",
                 problem_title: "⚠️ Problem",
                 problem_desc: "Digital distraction, focus issues, and data loss during internet outages. Existing assistants requiring constant network connections reduce productivity.",
