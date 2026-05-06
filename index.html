@@ -461,6 +461,7 @@
             overflow: hidden;
             font-family: 'Inter', sans-serif;
             position: relative;
+            overscroll-behavior: contain;
         }
 
         /* App Header (Mobile Top) */
@@ -541,6 +542,8 @@
             overflow-x: hidden;
             position: relative;
             padding-bottom: 80px; /* Space for bottom nav */
+            overscroll-behavior: contain; /* Prevent scroll chain to page */
+            -webkit-overflow-scrolling: touch;
         }
         .app-page {
             display: none;
